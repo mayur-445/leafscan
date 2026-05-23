@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Load model
 from keras.models import load_model
-model = tf.keras.models.load_model("model.keras")  # Load without compiling for faster startup
+model = tf.keras.models.load_model("model.h5", compile=False)  # Load without compiling for faster startup
 
 # Class names
 class_names = ['Tomato_Early_blight', 'Tomato_healthy', 'Tomato_Late_blight']
@@ -44,5 +44,6 @@ def index():
 
 # 🔥 IMPORTANT PART (FIXED)
 if __name__ == "__main__":
+    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
