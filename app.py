@@ -33,6 +33,7 @@ def index():
         from PIL import Image
         img = Image.open(filepath)
         img = img.resize((128, 128))
+
         img_array = np.array(img)
         img_array = np.expand_dims(img_array, axis=0)
         img_array = img_array / 255.0
@@ -43,7 +44,8 @@ def index():
         result = class_names[class_index]
         confidence = round(np.max(prediction) * 100, 2)
 
-    return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath)
+        return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath)
+        return render_template('index.html')
 
 
 # 🔥 IMPORTANT PART (FIXED)
