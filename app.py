@@ -21,7 +21,6 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    result = None
 
     if request.method == 'POST':
         file = request.files['file']
@@ -45,7 +44,7 @@ def index():
         confidence = round(np.max(prediction) * 100, 2)
 
         return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath)
-        return render_template('index.html')
+    return render_template('index.html')
 
 
 # 🔥 IMPORTANT PART (FIXED)
