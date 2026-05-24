@@ -12,11 +12,13 @@ img_path = "C:\Users\mayur m u\OneDrive\Desktop\dataset\test\Tomato___Early_blig
 # Load image
 img = image.load_img(img_path, target_size=(128,128))
 img_array = image.img_to_array(img)
-img_array = np.expand_dims(img_array, axis=0) / 255.0
+img_array = np.expand_dims(img_array, axis=0)
+img_array = img_array / 255.0
 
 # Predict
 prediction = model.predict(img_array)
-class_index = np.argmax(prediction)
+predicted_class = np.argmax(prediction, axis=1)[0]
+result = class_names[predicted_class]
 
 class_names = ['Tomato_Early_blight', 'Tomato_healthy', 'Tomato_Late_blight']
 
