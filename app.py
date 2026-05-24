@@ -40,11 +40,10 @@ def index():
         # Prediction
         prediction = model.predict(img_array)
         class_index = np.argmax(prediction)
-        confidence = np.max(prediction)
+        result = class_names[class_index]
+        confidence = round(np.max(prediction) * 100, 2)
 
-        result = f"{class_names[class_index]} ({confidence*100:.2f}%)"
-
-    return render_template('index.html', result=result)
+    return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath)
 
 
 # 🔥 IMPORTANT PART (FIXED)
