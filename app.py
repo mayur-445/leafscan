@@ -27,11 +27,15 @@ def index():
         file = request.files['file']
         filepath = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(filepath)
+        print("saved file path:", filepath)
 
         # Process image
-        img = image.load_img(filepath, target_size=(128, 128))
-        img_array = image.img_to_array(img)
-        img_array = np.expand_dims(img_array, axis=0) / 255.0
+        from PIL import Image
+        img = Image.open(filepath)
+        img = img.resize((128, 128))
+        img_array = np.array(img)
+        img_array = np.expand_dims(img_array, axis=0)
+        img_array = img_array / 255.0
 
         # Prediction
         prediction = model.predict(img_array)
