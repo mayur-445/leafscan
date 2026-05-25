@@ -34,6 +34,22 @@
             color:white;
         }
 
+        .progress-bar{
+            width:100%;
+            background:#ddd;
+            border-radius:20px;
+            overflow:hidden;
+            margin-top:10px;
+        }
+
+        .progress{
+            background:linear-gradient(to right,#00c853,#64dd17);
+            padding:10px;
+            color:white;
+            font-weight:bold;
+            text-align:center;
+        }
+
         h1{
             font-size:42px;
             margin-bottom:10px;
@@ -129,19 +145,24 @@
         <h2>Prediction: {{ prediction }}</h2>
 
         <h3>Confidence: {{ confidence }}%</h3>
+
+        <div class="progress-bar">
+            <div class=""progress" style=""width: {{ confidence }}%
+                 {{ confidence }}%"></div>
+        </div>
         
         <img src="{{ image_path }}" width="250">
-        
-        <h3>🌱 Suggested Tips</h3>
-        <p>{{ treatment }} </p>
-    </div>
+
+        <h3>🧪 Disease Description</h3>
+        <p>{{ description }}</p>
+
     
-    <div class="tips">
+        <div class="tips">
             <h3>🌱 Treatment Suggestion </h3>
 
             <p>{{ treatment }}</p>
 
-    </div>
+        </div>
 
     {% endif %}
 
