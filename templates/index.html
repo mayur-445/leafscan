@@ -14,24 +14,55 @@
             font-family:Arial, sans-serif;
         }
 
-        body{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#56ab2f,#a8e063);
-        }
+     body{
+         min-height:100vh;
+         display:flex;
+         justify-content:center;
+         align-items:center;
+    background:linear-gradient(-45deg,#56ab2f,#a8e063,#00c853,#43a047);
+        background-size:400% 400%;
+        animation:gradientBG 10s ease infinite;
+        font-family:Arial,sans-serif;
+        padding:20px;
+}
+
+@keyframes gradientBG{
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
 
         .container{
             width:90%;
-            max-width:600px;
+            max-width:650px;
             background:rgba(255,255,255,0.15);
             backdrop-filter:blur(10px);
-            padding:40px;
-            border-radius:20px;
+            padding:35px;
+            border-radius:25px;
             text-align:center;
             box-shadow:0 8px 32px rgba(0,0,0,0.2);
             color:white;
+            animation:fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
         }
 
         .progress-bar{
@@ -48,6 +79,18 @@
             color:white;
             font-weight:bold;
             text-align:center;
+        }
+
+        h1{
+            font-size:48px;
+            margin-bottom:20px;
+            animation:pulse 2s infinite;
+        }
+
+        .tagline{
+            font-size:18px;
+            color:#f1f1f1;
+            margin-bottom:25px;
         }
 
         h1{
@@ -68,19 +111,21 @@
         }
 
         button{
-            padding:12px 30px;
+            padding:14px 35px;
             border:none;
-            border-radius:12px;
-            background:#2e7d32;
+            border-radius:30px;
+            background:linear-gradient(to right,#00c853,#64dd17);
             color:white;
             font-size:18px;
             cursor:pointer;
             transition:0.3s;
+            margin-top:15px;
+            font-weight:bold;
         }
 
         button:hover{
-            background:#1b5e20;
-            transform:scale(1.05);
+            transform:scale(1.08);
+            box-shadow:0 0 20px rgba(0,255,100,0.6);
         }
 
         .result{
@@ -117,16 +162,71 @@
             margin-bottom:10px;
         }
 
+        h1{
+            font-size:48px;
+            margin-bottom:20px;
+            animation:pulse 2s infinite;
+        }
+
+        @keyframes pulse{
+            0%{
+                transform:scale(1);
+            }
+            50%{
+                transform:scale(1.05);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+            .leaf{
+                position:fixed;
+                font-size:40px;
+                animation:floatLeaf 8s linear infinite;
+                capacity:0.7;
+            }
+
+            .leaf1{
+                left:10%;
+                animation-delay:0s;
+            }
+
+            .leaf2{
+                left:50%;
+                animation-delay:2s;
+            }
+
+            .leaf3{
+                left:80%;
+                animation-delay:4s;
+            }
+
+@keyframes floatLeaf{
+    0%{
+        top:-10%;
+        transform:rotate(0deg);
+    }
+
+    100%{
+        top:110%;
+        transform:rotate(360deg);
+    }
+}
+
     </style>
 
 </head>
 <body>
 
+<div class="leaf leaf1">🍃</div>
+<div class="leaf leaf2">🍃</div>
+<div class="leaf leaf3">🍃</div>
+
 <div class="container">
 
     <h1>🌿 LeafScan AI</h1>
 
-    <p>Smart Tomato Leaf Disease Detection System</p>
+    <p class="tagline">Smart Tomato Leaf Disease Detection System🌿</p>
 
     <form method="POST" enctype="multipart/form-data">
 
@@ -149,9 +249,8 @@
         <div class=""progress-bar"></div>
 
         <div class="progress-bar">
-            <div class="progress" style="width: {{ confidence }}%">
-                {{ confidence }}%
-            </div>
+            <div class=""progress" style=""width: {{ confidence }}%
+                 {{ confidence }}%"></div>
         </div>
         
         <img src="{{ image_path }}" width="250">
