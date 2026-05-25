@@ -89,8 +89,12 @@
         }
 
         .tips{
+            background:#355b3f;
+            padding: 15px;
             margin-top:20px;
-            text-align:left;
+            border-radius: 12px;
+            color: #2e7d32;
+            font-size: 18px;
         }
 
         .tips h3{
@@ -124,26 +128,18 @@
 
         <h2>Prediction: {{ prediction }}</h2>
 
-        <h3 class="confidence">
-            Confidence: {{ confidence }}%
-        </h3>
+        <h3>Confidence: {{ confidence }}%</h3>
+        
+        <img src="{{ image_path }}" width="250">
+        
+        <h3>🌱 Suggested Tips</h3>
+        <p>{{ treatment }} </p>
+    </div>
+    
     <div class="tips">
             <h3>🌱 Treatment Suggestion </h3>
 
             <p>{{ treatment }}</p>
-
-                <img src="{{ image_path }}">
-    </div>
-        <div class="tips">
-
-            <h3>🌱 Suggested Tips</h3>
-
-            <p>
-                Maintain proper watering, remove infected leaves,
-                and use suitable fungicides for better plant health.
-            </p>
-
-        </div>
 
     </div>
 

@@ -41,9 +41,21 @@ def index():
         prediction = model.predict(img_array)
         class_index = np.argmax(prediction)
         result = class_names[class_index]
+        tips = {
+
+           "Tomato_Early_blight":
+           "Remove infected leaves and apply copper-based fungicide.",
+
+           "Tomato_Late_blight":
+           "Avoid excess moisture and use chlorothalonil spray.",
+
+           "Tomato_healthy":
+           "Your plant is healthy. Maintain proper watering and sunlight."
+
+       }
         confidence = round(np.max(prediction) * 100, 2)
 
-        return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath)
+        return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath,treatment=tips[result])
     return render_template('index.html')
 
 
