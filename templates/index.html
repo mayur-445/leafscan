@@ -146,9 +146,12 @@
 
         <h3>Confidence: {{ confidence }}%</h3>
 
+        <div class=""progress-bar"></div>
+
         <div class="progress-bar">
-            <div class=""progress" style=""width: {{ confidence }}%
-                 {{ confidence }}%"></div>
+            <div class="progress" style="width: {{ confidence }}%">
+                {{ confidence }}%
+            </div>
         </div>
         
         <img src="{{ image_path }}" width="250">
