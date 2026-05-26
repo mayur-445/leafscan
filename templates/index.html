@@ -270,5 +270,13 @@
 
 </div>
 
+<script>
+    if ("{{prediction}}"){
+
+        let msg = new SpeechSynthesisUtterance("Detected {{ prediction }}");
+        speechSynthesis.speak(msg);
+    }
+</script>
+
 </body>
 </html>
