@@ -224,6 +224,18 @@
 
 <div class="container">
 
+<body>
+
+<div class="container">
+
+<select id="language" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="kn">Kannada</option>
+    <option value="hi">Hindi</option>
+</select>
+
+<h1 id="title">LeafScan AI</h1>
+
     <h1>🌿 LeafScan AI</h1>
 
     <p class="tagline">Smart Tomato Leaf Disease Detection System🌿</p>
@@ -276,6 +288,54 @@
         let msg = new SpeechSynthesisUtterance("Detected {{ prediction }}");
         speechSynthesis.speak(msg);
     }
+</script>
+<script>
+
+if("{{prediction}}"){
+
+    let msg = new SpeechSynthesisUtterance(
+    "Detected {{ prediction }}");
+
+    speechSynthesis.speak(msg);
+
+}
+
+function changeLanguage(){
+
+    let lang = document.getElementById("language").value;
+
+    if(lang=="kn"){
+
+        document.getElementById("title").innerText =
+        "ಲೀಫ್‌ಸ್ಕ್ಯಾನ್ AI";
+
+        document.getElementById("predictBtn").innerText =
+        "ರೋಗ ಪತ್ತೆಮಾಡಿ";
+
+    }
+
+    else if(lang=="hi"){
+
+        document.getElementById("title").innerText =
+        "लीफस्कैन AI";
+
+        document.getElementById("predictBtn").innerText =
+        "रोग पहचानें";
+
+    }
+
+    else{
+
+        document.getElementById("title").innerText =
+        "LeafScan AI";
+
+        document.getElementById("predictBtn").innerText =
+        "Predict Disease";
+
+    }
+
+}
+
 </script>
 
 </body>
