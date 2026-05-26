@@ -13,7 +13,7 @@ from keras.models import load_model
 model = load_model("model.h5", compile=False)  # Load without compiling for faster startup
 
 # Class names
-class_names = ['Tomato_Early_blight', 'Tomato_healthy', 'Tomato_Late_blight']
+class_names = ['Non_Tomato', 'Tomato_Early_blight', 'Tomato_healthy', 'Tomato_Late_blight']
 
 # Upload folder
 UPLOAD_FOLDER = "static/uploads"
@@ -41,6 +41,8 @@ def index():
         prediction = model.predict(img_array)
         class_index = np.argmax(prediction)
         result = class_names[class_index]
+        if result == "Non_Tomato":
+            return render_template('index.html', prediction="Invalid leaf image", confidence=0, image_path=filepath, treatment="Please upload a clear leaf image", description="The uploaded image does not appear to be a tomato leaf. Please try again with a clear image of a tomato leaf.")
         tips = {
 
            "Tomato_Early_blight":
