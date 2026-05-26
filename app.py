@@ -53,9 +53,17 @@ def index():
            "Your plant is healthy. Maintain proper watering and sunlight."
 
        }
+        description = {
+            "Tomato_Early_blight": "Early blight is a common fungal disease that affects tomato plants, causing dark spots on leaves and fruit.",
+            "Tomato_Late_blight": "Late blight is a serious disease that can rapidly destroy tomato plants, characterized by water-soaked lesions on leaves and fruit.",
+            "Tomato_healthy": "Your tomato plant is healthy with no signs of disease. Keep up the good care!"
+        }
         confidence = round(np.max(prediction) * 100, 2)
+        if confidence < 85:
+            result = "Invalid leaf image"
+            treatment = "please upload a clear leaf image"
 
-        return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath,treatment=tips[result])
+        return render_template('index.html', prediction=result, confidence=confidence,image_path=filepath,treatment=tips.get(result, "no treatment available"),description=description.get(result, "No description available"))
     return render_template('index.html')
 
 
