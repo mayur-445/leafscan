@@ -39,7 +39,7 @@ model = models.Sequential([
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-model.fit(train_generator, validation_data=val_generator, epochs=5)
+model.fit(train_generator, validation_data=val_generator, epochs=20)
 
 model.save("model.h5")
 
