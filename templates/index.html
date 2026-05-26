@@ -267,15 +267,13 @@
         
         <img src="{{ image_path }}" width="250">
 
-        <h3>🧪 Disease Description</h3>
-        <p>{{ description }}</p>
+        <h3 id="descHeading">🧪 Disease Description</h3>
+        <p id="descText">{{ description }}</p>
 
     
         <div class="tips">
-            <h3>🌱 Treatment Suggestion </h3>
-
-            <p>{{ treatment }}</p>
-
+            <h3 id="treatHeading">💡 Treatment Suggestions</h3>
+            <p id="treatText">{{ treatment }}</p>
         </div>
 
     {% endif %}
@@ -304,6 +302,10 @@ function changeLanguage(){
 
     let lang = document.getElementById("language").value;
 
+    // Current texts
+    let disease = document.getElementById("descText");
+    let treatment = document.getElementById("treatText");
+
     if(lang=="kn"){
 
         document.getElementById("title").innerText =
@@ -311,6 +313,42 @@ function changeLanguage(){
 
         document.getElementById("predictBtn").innerText =
         "ರೋಗ ಪತ್ತೆಮಾಡಿ";
+
+        document.getElementById("descHeading").innerText =
+        "🧪 ರೋಗ ವಿವರಣೆ";
+
+        document.getElementById("treatHeading").innerText =
+        "🌱 ಚಿಕಿತ್ಸೆ ಸಲಹೆ";
+
+        // Healthy
+        if(disease.innerText.includes("healthy")){
+
+            disease.innerText =
+            "ನಿಮ್ಮ ಟೊಮ್ಯಾಟೊ ಸಸಿ ಆರೋಗ್ಯಕರವಾಗಿದೆ.";
+
+            treatment.innerText =
+            "ಸರಿಯಾದ ನೀರಾವರಿ ಮತ್ತು ಸೂರ್ಯಪ್ರಕಾಶವನ್ನು ಕಾಪಾಡಿ.";
+        }
+
+        // Early Blight
+        else if(disease.innerText.includes("Early blight")){
+
+            disease.innerText =
+            "ಇದು ಟೊಮ್ಯಾಟೊ ಸಸಿಗೆ ತಗುಲುವ ಸಾಮಾನ್ಯ ಶಿಲೀಂಧ್ರ ರೋಗ.";
+
+            treatment.innerText =
+            "ಸೊಂಕಿತ ಎಲೆಗಳನ್ನು ತೆಗೆದುಹಾಕಿ ಮತ್ತು ಫಂಗಿಸೈಡ್ ಬಳಸಿ.";
+        }
+
+        // Late Blight
+        else if(disease.innerText.includes("Late blight")){
+
+            disease.innerText =
+            "ಇದು ಗಂಭೀರ ರೋಗವಾಗಿದ್ದು ಸಸಿಯನ್ನು ಬೇಗ ಹಾಳುಮಾಡಬಹುದು.";
+
+            treatment.innerText =
+            "ಹೆಚ್ಚಿನ ತೇವಾಂಶ ತಪ್ಪಿಸಿ ಮತ್ತು ಕ್ಲೋರೋಥಾಲೋನಿಲ್ ಬಳಸಿ.";
+        }
 
     }
 
@@ -322,15 +360,47 @@ function changeLanguage(){
         document.getElementById("predictBtn").innerText =
         "रोग पहचानें";
 
+        document.getElementById("descHeading").innerText =
+        "🧪 रोग विवरण";
+
+        document.getElementById("treatHeading").innerText =
+        "🌱 उपचार सुझाव";
+
+        // Healthy
+        if(disease.innerText.includes("healthy")){
+
+            disease.innerText =
+            "आपका टमाटर पौधा स्वस्थ है।";
+
+            treatment.innerText =
+            "उचित पानी और धूप बनाए रखें।";
+        }
+
+        // Early Blight
+        else if(disease.innerText.includes("Early blight")){
+
+            disease.innerText =
+            "यह टमाटर पौधों में होने वाला फंगल रोग है।";
+
+            treatment.innerText =
+            "संक्रमित पत्तियां हटाएं और फंगीसाइड का उपयोग करें।";
+        }
+
+        // Late Blight
+        else if(disease.innerText.includes("Late blight")){
+
+            disease.innerText =
+            "यह गंभीर रोग पौधे को जल्दी नुकसान पहुंचाता है।";
+
+            treatment.innerText =
+            "अधिक नमी से बचें और क्लोरोथालोनिल स्प्रे करें।";
+        }
+
     }
 
     else{
 
-        document.getElementById("title").innerText =
-        "LeafScan AI";
-
-        document.getElementById("predictBtn").innerText =
-        "Predict Disease";
+        location.reload();
 
     }
 
